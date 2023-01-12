@@ -7,7 +7,6 @@ const memeSchema = new mongoose.Schema({
         },
         content: {
             type: String,
-            required: [true, "message is required"],
         },
         Image: {
             type: String,
