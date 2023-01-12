@@ -45,7 +45,7 @@ router.post("/", async (req, res, next) => {
 router.post("/:id", async (req, res, next) => {
     try {
         const user = await User.findById(req.params.id)
-        const UserWithMeme = await Meme.populate("meme")
+        const UserWithMeme = await meme.populate("meme")
         res.status(200).json(UserWithMeme)
     } catch (error) {
         console.log(error)
