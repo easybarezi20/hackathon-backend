@@ -43,10 +43,10 @@ app.use((req, res, next) => {
 
 // Api Routes
 
-app.use("/chat", chatController);
+// app.use("/meme", chatController);
 app.use((err, req, res, next) => res.status(500).send(err));
 
-app.use("/user", userController);
+// app.use("/user", userController);
 app.use((err, req, res, next) => res.status(500).send(err));
 
 
