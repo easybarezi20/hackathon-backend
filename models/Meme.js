@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const memeSchema = new mongoose.Schema({
-        user: {
-            type: mongoose.Types.ObjectId,
-            ref: "User",
-        },
         content: {
             type: String,
         },
