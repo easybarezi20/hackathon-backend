@@ -9,10 +9,10 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required:[true, "Password is Required!"],
     },
-    meme: {
+    meme: [{
         type: mongoose.Types.ObjectId,
         ref: "Meme",
-    },
+    }],
 });
 
 const User = mongoose.model("User", userSchema)
