@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Meme = require('./Meme')
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -9,10 +10,7 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required:[true, "Password is Required!"],
     },
-    meme: [{
-        type: mongoose.Types.ObjectId,
-        ref: "Meme",
-    }],
+    meme:[Meme.schema]
 });
 
 const User = mongoose.model("User", userSchema)
