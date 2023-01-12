@@ -1,3 +1,4 @@
+const { log } = require("console");
 const express = require("express");
 const router = express.Router();
 const { Meme, User } = require("../models");
@@ -6,7 +7,7 @@ require("../config/db.connection");
 
 router.get("/", async (req, res, next) => {
     try {
-      const meme = await Meme.find({});
+      const meme = await Meme.find({}).populate("user");
       res.status(200).json(meme);
     } catch (error) {
       console.error(error);
@@ -25,7 +26,14 @@ router.get("/", async (req, res, next) => {
   router.post("/", async (req, res, next) => {
     try {
       const createdMeme = await Meme.create(req.body);
-      res.status(201).json(createdMeme);
+      const memeWithUser = await createdMeme.populate("user")
+      res.status(201).json(memeWithUser);
+      console.log("what is user",req.body.user);
+      await User.findByIdAndUpdate(req.body.user.id, {
+        $push: {
+            meme: createdMeme._id,
+        },
+    })
     } catch (error) {
       console.error(error);
       next(error);

@@ -12,7 +12,7 @@ require("../config/db.connection")
 // the ROUTE to GET all user objects from the database
 router.get("/", async (req, res, next) => {
     try {
-        const user = await User.find({})
+        const user = await User.find({}).populate("meme")
         res.status(200).json(user)
     } catch (error) {
         console.log(error)
