@@ -45,10 +45,10 @@ const userController = require("./controller/user-controller");
 
 // Api Routes
 
-// app.use("/meme", chatController);
+app.use("/meme", memeController);
 app.use((err, req, res, next) => res.status(500).send(err));
 
-// app.use("/user", userController);
+app.use("/user", userController);
 app.use((err, req, res, next) => res.status(500).send(err));
 
 
