@@ -37,7 +37,9 @@ app.use((req, res, next) => {
 });
 
 // Controllers 
+const memeController = require("./controller/meme-controller");
 
+const userController = require("./controller/user-controller");
 
 
 
