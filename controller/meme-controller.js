@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
   });
   router.get("/:id", async (req, res, next) => {
     try {
-      const meme = await Meme.findById(req.params.id);
+      const meme = await Meme.findById(req.params.id).populate("user");
       res.status(200).json(meme);
     } catch (error) {
       console.error(error);
